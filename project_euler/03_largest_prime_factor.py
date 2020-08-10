@@ -5,26 +5,21 @@ What is the largest prime factor of the number 600851475143?
 """
 
 
-def is_prime(n):
-    if n <= 1:
-        return False
-
-    for i in range(2, n):
-        if n % i == 0:
-            return False
-
-    return True
-
-
 def largest_prime_factor(n):
-    factors = []
-    for i in range(n, 0, -1):
-        if n % i == 0 and is_prime(i):
-            return i
-            
-        # print(i)
+    prime_factor = 1
+    i = 2
 
-    return None
+    while i <= n / i:
+        if n % i == 0:
+            prime_factor = i
+            n /= i
+        else:
+            i += 1
 
+    if prime_factor < n:
+        prime_factor = n
 
-print(largest_prime_factor(13195))
+    return prime_factor
+
+print(largest_prime_factor(600851475143))
+
